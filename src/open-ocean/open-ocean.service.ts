@@ -19,9 +19,7 @@ export class OpenOceanService {
       const req: ProxyRequest = {
         headers: { 'Content-Type': 'application/json' },
         method: 'GET',
-        url:
-          this.configService.openoceanUrl +
-          `/${chainId}/limit-order/all?statuses=${statuses}&page=${page}&limit=${limit}`
+        url: this.configService.openoceanUrl + `/${chainId}/limit-order/all?statuses=${statuses}`
       };
 
       const res = await lastValueFrom(this.httpService.request(req));
@@ -42,3 +40,4 @@ export class OpenOceanService {
     }
   }
 }
+
