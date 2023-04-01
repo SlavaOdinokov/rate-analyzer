@@ -2,6 +2,8 @@ import { Injectable } from '@nestjs/common';
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 import * as dotenv from 'dotenv';
 
+import { OrderSchema } from 'src/orders/persistance/orders.entity';
+
 dotenv.config();
 
 const requiredParam = Symbol();
@@ -35,7 +37,8 @@ export class ConfigService {
       username: this.dbUser,
       password: this.dbPassword,
       database: this.dbName,
-      synchronize: false
+      synchronize: true,
+      entities: [OrderSchema]
     };
   }
 }

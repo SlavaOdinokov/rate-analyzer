@@ -13,7 +13,7 @@ export interface ProxyParams {
   chainId?: number; // 1, 56, 137, 250, 43114
 }
 
-export type ProxyResponse<T> = T | ErrorResponse;
+export type ProxyResponse = any | ErrorResponse;
 
 export interface ErrorResponse {
   status: number;
@@ -28,3 +28,7 @@ export interface AxiosError {
   response: { status: number; data: any };
 }
 
+export interface DeleteResponse {
+  status: number;
+  message: string;
+}

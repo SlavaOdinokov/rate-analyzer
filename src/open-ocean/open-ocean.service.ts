@@ -2,17 +2,16 @@ import { Injectable } from '@nestjs/common';
 import { HttpService } from '@nestjs/axios';
 import { lastValueFrom } from 'rxjs';
 
-import { ProxyRequest, ProxyResponse, ProxyParams } from 'src/common/types';
+import { ProxyRequest, ProxyParams } from 'src/common/types';
 import { ConfigService } from 'src/config/config.service';
+import { OpenOceanResponse } from './types';
 
 @Injectable()
 export class OpenOceanService {
   constructor(private httpService: HttpService, private configService: ConfigService) {}
 
-  async list(params: ProxyParams): Promise<ProxyResponse<any>> {
+  async list(params: ProxyParams): Promise<OpenOceanResponse> {
     const chainId = params.chainId || 1;
-    const page = params.page || 1;
-    const limit = params.limit || 10;
     const statuses = params.statuses || [1];
 
     try {
@@ -27,17 +26,9 @@ export class OpenOceanService {
     } catch (err) {
       if (err?.response) {
         // Axios error
-        return {
-          status: err.response.status,
-          error: err.response.data
-        };
+        throw new Error(err.response.data);
       }
-      console.error(err);
-      return {
-        status: 500,
-        error: 'Internal server error'
-      };
+      throw new Error(err);
     }
   }
 }
-
