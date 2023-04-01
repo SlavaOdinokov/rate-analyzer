@@ -9,4 +9,9 @@ export class TasksService {
   async handle() {
     this.logger.debug('Called every 10 seconds');
   }
+
+  @Cron(CronExpression.EVERY_MINUTE)
+  async analyzer() {
+    this.logger.debug('Called every 1 minute');
+  }
 }

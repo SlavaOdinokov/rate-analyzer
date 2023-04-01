@@ -3,7 +3,6 @@ import { NestFactory } from '@nestjs/core';
 import { CommandModule, CommandService } from 'nestjs-command';
 
 import { CliModule } from 'src/cli/cli.module';
-// import { inspectFmt } from "src/common";
 
 async function bootstrap(): Promise<void> {
   const LOG_LEVEL = process.env.LOG_LEVEL || '';

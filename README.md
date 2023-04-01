@@ -20,10 +20,10 @@ $ yarn run start:dev
 $ yarn run start:prod
 ```
 
-## Running the rate analyzer script
+## Running the rate analyzer script (for test)
 
 ```bash
-$ yarn cli analyzer
+$ yarn cli analyzer -n <chainId>
 ```
 
 ## Test

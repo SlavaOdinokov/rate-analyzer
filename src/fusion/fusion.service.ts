@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { FusionSDK, NetworkEnum } from '@1inch/fusion-sdk';
+import { FusionSDK } from '@1inch/fusion-sdk';
 import { ActiveOrdersResponse } from '@1inch/fusion-sdk/api/orders';
 
 import { ProxyParams } from 'src/common/types';
